@@ -1,0 +1,47 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <form id="form1" style="margin-left:400px; margin-top:100px;" runat="server">
+        <label><img src="" width="400" /><span style="font-size:25px; margin-left:100px; color:#24779D;">İŞ TAKİP SİSTEMİ</span> </label>
+
+        <div>
+            <table style="width: 100%;">
+                <tr>
+                    <td class="auto-style1">Kullanıcı Adı</td>
+                    <td class="auto-style2">:</td>
+                    <td>
+                        <asp:TextBox class="form-control" ID="txt_k_ad" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style1">Şifre</td>
+                    <td class="auto-style2">:</td>
+                    <td>
+                        <asp:TextBox class="form-control" ID="txt_parola" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style1">&nbsp;</td>
+                    <td class="auto-style2">&nbsp;</td>
+                    <td>
+                        <asp:Button class="btn btn-info" ID="btn_giris" runat="server" Text="Giriş" Width="69px" OnClick="btn_giris_Click" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="auto-style1">&nbsp;</td>
+                    <td class="auto-style2">&nbsp;</td>
+                    <td>
+
+                        <asp:Label ID="Label3" runat="server" Text="Label3" Visible="False"></asp:Label>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+    </form>
+</div>

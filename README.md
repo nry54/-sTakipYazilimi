@@ -9,5 +9,6 @@ Güvenlik,tasarım ve işlevsel olarak geliştirimine devam etmek istemekteyim.
 
 Örnek Kullanıcı Girişleri
 İşveren Girişi kullanıcı adı: isveren parola: isveren1
+
 Çalışan Girişi kullanıcı adı: calisan parola: calisan1
 

@@ -13,7 +13,6 @@ namespace IsTakipYazilimi_GYG.IsverenPaneli
 {
     public partial class GorevListesi : System.Web.UI.Page
     {
-
         SqlConnection cnn = new SqlConnection();
         protected void Page_Load(object sender, EventArgs e)
         {

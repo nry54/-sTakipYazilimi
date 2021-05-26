@@ -49,5 +49,6 @@ namespace IsTakipYazilimi_GYG.IsverenPaneli
             MessageBox.Show("Görev kayıt edildi");
             Response.Redirect("~/IsverenPaneli/GorevListesi.aspx");
         }
+
     }
 }

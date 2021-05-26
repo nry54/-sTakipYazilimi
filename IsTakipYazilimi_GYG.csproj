@@ -122,6 +122,7 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="CalisanPaneli\AnaSayfa.aspx" />
+    <Content Include="CalisanPaneli\Gorevlerim.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -225,6 +226,13 @@
     </Compile>
     <Compile Include="CalisanPaneli\Calisan.Master.designer.cs">
       <DependentUpon>Calisan.Master</DependentUpon>
+    </Compile>
+    <Compile Include="CalisanPaneli\Gorevlerim.aspx.cs">
+      <DependentUpon>Gorevlerim.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CalisanPaneli\Gorevlerim.aspx.designer.cs">
+      <DependentUpon>Gorevlerim.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>

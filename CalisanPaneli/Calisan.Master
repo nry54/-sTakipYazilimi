@@ -14,7 +14,10 @@
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <style>
-       .sidebar {
+        .sidebar {
+          top: 0;
+          left: 0;
+          z-index: 1;
           margin: 0;
           padding: 0;
           width: 200px;
@@ -87,27 +90,16 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"> </span>
-                    </button>
-                    <a class="navbar-brand" runat="server" href="~/">Güvenli Yazılım Geliştirme Uygulama Ödevi</a>
-                    
-                </div>
-
-            </div>
-        </div>
         <div class="sidebar">
-                  <a class="active" href="~/">Anasayfa</a>
-                  <a href="~/CalisanListesi">Görevlerim</a>
-                  <a> <asp:Button ID="btn_cikis" runat="server" Text="Çıkış" OnClick="btn_cikis_Click" Width="227px" Font-Bold="True" /></a>
+                  <a class="active" href="~/CalisanPaneli/Anasayfa.aspx">Anasayfa</a>
+                  <a href="Gorevlerim">Görevlerim</a>
+                  <a> <asp:Button ID="btn_cikis" runat="server" Text="Çıkış" OnClick="btn_cikis_Click" Width="164px" Font-Bold="True" /></a>
                 </div>
         
         <div class="container body-content">
+            <div style="width:100%; height:60px; font-family:Times New Roman; font-size:24pt; font-weight:bold; color:White; background-color:#444; text-align:center">
+                  Hoşgeldin Çalışan Arkadaşım
+            </div>
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
                 
             </asp:ContentPlaceHolder>

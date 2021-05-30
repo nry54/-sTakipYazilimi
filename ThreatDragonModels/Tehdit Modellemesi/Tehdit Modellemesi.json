@@ -1,0 +1,17 @@
+{
+  "summary": {
+    "title": "Tehdit Modellemesi",
+    "description": "Güvenli Yazılım Geliştirme Final Ödevi",
+    "owner": "Nuray Şentürk"
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [
+      {
+        "title": "Tehdit Model Diagram",
+        "thumbnail": "./public/content/images/thumbnail.jpg",
+        "id": 0
+      }
+    ]
+  }
+}

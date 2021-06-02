@@ -1,16 +1,1033 @@
 {
   "summary": {
-    "title": "Tehdit Modellemesi",
-    "description": "Güvenli Yazılım Geliştirme Final Ödevi",
+    "title": "GYG Threat Model",
+    "description": "GYG - Iş Takip Yazılımı",
     "owner": "Nuray Şentürk"
   },
   "detail": {
-    "contributors": [],
+    "contributors": [
+      {
+        "name": "Y195052055_Nuray Şentürk",
+        "$$hashKey": "object:58"
+      }
+    ],
     "diagrams": [
       {
-        "title": "Tehdit Model Diagram",
-        "thumbnail": "./public/content/images/thumbnail.jpg",
-        "id": 0
+        "title": "DFD-1",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "diagramType": "STRIDE",
+        "id": 0,
+        "$$hashKey": "object:14",
+        "diagramJson": {
+          "cells": [
+            {
+              "type": "tm.Actor",
+              "size": {
+                "width": 160,
+                "height": 80
+              },
+              "position": {
+                "x": 50,
+                "y": 50
+              },
+              "angle": 0,
+              "id": "837f49fc-6d89-432f-8ae6-29969fa64fdd",
+              "z": 1,
+              "hasOpenThreats": false,
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasNoOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "Kullanıcılar"
+                },
+                ".element-text": {
+                  "class": "element-text hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Process",
+              "size": {
+                "width": 100,
+                "height": 100
+              },
+              "position": {
+                "x": 279,
+                "y": 122
+              },
+              "angle": 0,
+              "id": "0edf595d-36a1-478f-b113-886d91c945f2",
+              "z": 2,
+              "hasOpenThreats": false,
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasNoOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "Web Sunucusu"
+                },
+                ".element-text": {
+                  "class": "element-text hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Process",
+              "size": {
+                "width": 100,
+                "height": 100
+              },
+              "position": {
+                "x": 539,
+                "y": 347
+              },
+              "angle": 0,
+              "id": "24d3a54a-d57a-4f78-b400-ac2b908daa3d",
+              "z": 3,
+              "hasOpenThreats": false,
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasNoOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "Veritabanı\nİşlemleri"
+                },
+                ".element-text": {
+                  "class": "element-text hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Store",
+              "size": {
+                "width": 160,
+                "height": 80
+              },
+              "position": {
+                "x": 584,
+                "y": 471
+              },
+              "angle": 0,
+              "id": "0834d56a-1faf-4391-ab88-8e1e1ddb582d",
+              "z": 4,
+              "hasOpenThreats": false,
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasNoOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "İlişkisel Veritabanı"
+                },
+                ".element-text": {
+                  "class": "element-text hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Process",
+              "size": {
+                "width": 100,
+                "height": 100
+              },
+              "position": {
+                "x": 610,
+                "y": 20
+              },
+              "angle": 0,
+              "id": "8957df9b-be19-47a8-ab26-34f99c1b5a0e",
+              "z": 5,
+              "hasOpenThreats": false,
+              "description": "Kullanıcı CRUD işlemleri",
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasNoOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "Kullanıcı\nİşlemleri"
+                },
+                ".element-text": {
+                  "class": "element-text hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Process",
+              "size": {
+                "width": 100,
+                "height": 100
+              },
+              "position": {
+                "x": 212,
+                "y": 432
+              },
+              "angle": 0,
+              "id": "e18a6f67-aaa8-4bcb-97d1-95e881a2a06c",
+              "z": 6,
+              "hasOpenThreats": true,
+              "description": "Admin, işveren, çalışan olarak 3 yetkimiz bulunmaktadır",
+              "threats": [
+                {
+                  "ruleId": "c1377855-ea20-4c97-8861-f95c364fb8d2",
+                  "title": "Generic elevation threat",
+                  "type": "Spoofing",
+                  "modelType": "STRIDE",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "Başka bir kullanıcının kimlik doğrulama bilgilerine yasa dışı bir şekilde erişme ve ardından bunları kullanması durumuna sebep olan çok kullanılan tehdit modelidir.",
+                  "mitigation": "Sistem session kontrolleri ve parolanın gizliliği ile bu tehdit modeli için çözüm getirilebilir.\nProjede  if (HttpContext.Current.Session[\"kullanici_adi\"] == null || HttpContext.Current.Session[\"yetki_id\"].ToString() != \"3\") ifadesiyle yetki kontrolleri yapılmaktadır.",
+                  "$$hashKey": "object:784"
+                },
+                {
+                  "ruleId": "c1377855-ea20-4c97-8861-f95c364fb8d2",
+                  "title": "Generic elevation threat",
+                  "type": "Tampering",
+                  "modelType": "STRIDE",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "Verileri kötü niyetli bir şekilde değiştirilmesi durumuna sebep olan tehdit modelidir.",
+                  "mitigation": "TLS protokolleri kullanmak, Json ve token kullanımı çözüm olacaktır.\nErişim kontrol listesi kullanılması bu tehdit modeli için sistemin veri bütünlüğü için faydalı olacaktır. Projede yetkisiz erişimlere karşı engeller koyulmuştur ve yetkisiz olan saldırganın verileri değiştirmesi mümkün değildir.",
+                  "$$hashKey": "object:472"
+                },
+                {
+                  "ruleId": "c1377855-ea20-4c97-8861-f95c364fb8d2",
+                  "title": "Generic elevation threat",
+                  "type": "Repudiation",
+                  "modelType": "STRIDE",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "Bir saldırganın yapacağı ilk şeylerden biri log kayıtlarını silmek olacaktır. Bu tür güvenlik zafiyetlerine sebep olan bir tehdit modelidir.",
+                  "mitigation": "Loglama mekanizmaları sistemde kullanmak önemlidir. Bu tehdit modeli için log mekanizmaları çözüm olacaktır.",
+                  "$$hashKey": "object:804"
+                },
+                {
+                  "ruleId": "b2a6d40d-d3f8-4750-8e4d-c02cc84b13dc",
+                  "title": "Generic spoofing threat",
+                  "type": "Information disclosure",
+                  "modelType": "STRIDE",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "Yetkisi olmadan bir kullanıcının bilgilerine erişme durumuna sebep olan tehdit modelidir. Örnek olarak bir sorguya kullanıcı bilgisi verilerek yetkisiz bilgilere erişilmesi",
+                  "mitigation": "Erişim kontrolleri kullanmak ve şifreleme bu tehdit modelinin yol açağı sorunlar için bir çözüm yöntemidir. Bu sayede bilginin gizliliği sağlanabilir. Projede erişim kontrolleri bulunmaktadır ve parolalar da veritabanına şifreli bir şekilde kayıt edilmektedir.",
+                  "$$hashKey": "object:810"
+                },
+                {
+                  "ruleId": "4adaa48a-0345-4533-a189-64c98c4420dd",
+                  "title": "Generic tampering threat",
+                  "type": "Denial of service",
+                  "modelType": "STRIDE",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "Sunucuya sürekli istek gönderme ve bu durumda saldırgana hizmet vermekten diğer kullanıcılara hizmet veremeyebilir. Bu duruma sebep olan tehdit modellemesidir.",
+                  "mitigation": "Erişim kontrol listesi ile sistemin kullanılabilirliği sağlanabilir ve bu tehdit modeline çözüm getirilebilir.",
+                  "$$hashKey": "object:816"
+                },
+                {
+                  "ruleId": "c1377855-ea20-4c97-8861-f95c364fb8d2",
+                  "title": "Generic elevation threat",
+                  "type": "Elevation of privilege",
+                  "modelType": "STRIDE",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "Saldırganların kendilerini admin olarak tanımlatıp sisteme sızabiliyorlar. Bu tip güvenlik zafiyetine sebep olan tehdit modeli türüdür.",
+                  "mitigation": "Giriş doğrulaması ve erişim kontrol listesi kontrolleri ile bu tehdit modelinin yol açtığı güvenlik zafiyetlerine çözüm olacaktır.",
+                  "$$hashKey": "object:822"
+                }
+              ],
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "Rol Yetki\nKontrol"
+                },
+                ".element-text": {
+                  "class": "element-text hasOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Process",
+              "size": {
+                "width": 100,
+                "height": 100
+              },
+              "position": {
+                "x": 13,
+                "y": 437
+              },
+              "angle": 0,
+              "id": "faf5ea3f-3d33-47ed-973d-e12eec606ad8",
+              "z": 7,
+              "hasOpenThreats": false,
+              "description": "Görev CRUD ve görev durum değişikliği olabilir",
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasNoOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "Görev İşlemleri"
+                },
+                ".element-text": {
+                  "class": "element-text hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Boundary",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "x": 1,
+                "y": 135
+              },
+              "target": {
+                "x": 362,
+                "y": 47
+              },
+              "vertices": [
+                {
+                  "x": 45,
+                  "y": 168
+                },
+                {
+                  "x": 209,
+                  "y": 162
+                }
+              ],
+              "id": "db656ad8-6e84-4652-a637-d228c6df60cb",
+              "z": 8,
+              "attrs": {}
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "x": 109,
+                "y": 132
+              },
+              "target": {
+                "id": "0edf595d-36a1-478f-b113-886d91c945f2"
+              },
+              "vertices": [
+                {
+                  "x": 100,
+                  "y": 241
+                },
+                {
+                  "x": 116,
+                  "y": 260
+                },
+                {
+                  "x": 172,
+                  "y": 246
+                },
+                {
+                  "x": 217,
+                  "y": 235
+                }
+              ],
+              "id": "4d3066a2-df8e-4782-a802-e08b99dc38a3",
+              "labels": [
+                {
+                  "position": {
+                    "distance": 0.5086100850110359,
+                    "offset": 17.489298357651126
+                  },
+                  "attrs": {
+                    "text": {
+                      "text": "http istek",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 9,
+              "hasOpenThreats": false,
+              "protocol": "TLS",
+              "isPublicNetwork": false,
+              "isEncrypted": true,
+              "description": "Kullanıcı bir siteye erişme talebinde bulunur.",
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "0edf595d-36a1-478f-b113-886d91c945f2"
+              },
+              "target": {
+                "id": "837f49fc-6d89-432f-8ae6-29969fa64fdd"
+              },
+              "vertices": [
+                {
+                  "x": 337,
+                  "y": 56
+                },
+                {
+                  "x": 340,
+                  "y": 34
+                },
+                {
+                  "x": 296,
+                  "y": 38
+                },
+                {
+                  "x": 251,
+                  "y": 45
+                }
+              ],
+              "id": "ca5a670d-a5a2-4ba4-a649-4f5e7ec32646",
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "http cevap",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 10,
+              "hasOpenThreats": false,
+              "description": "Web sunucusu olumlu olumsuz kullanıcıya geri dönüş sağlar.",
+              "protocol": "TLS",
+              "isEncrypted": true,
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Boundary",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "x": 31,
+                "y": 354
+              },
+              "target": {
+                "x": 531,
+                "y": 41
+              },
+              "vertices": [
+                {
+                  "x": 336,
+                  "y": 274
+                }
+              ],
+              "id": "0bbd244b-d33f-499f-a640-9a65f5804a1b",
+              "z": 12,
+              "attrs": {}
+            },
+            {
+              "type": "tm.Boundary",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "x": 353,
+                "y": 559
+              },
+              "target": {
+                "x": 765,
+                "y": 316
+              },
+              "vertices": [
+                {
+                  "x": 415,
+                  "y": 494
+                },
+                {
+                  "x": 543,
+                  "y": 345
+                },
+                {
+                  "x": 645,
+                  "y": 271
+                }
+              ],
+              "id": "cb4d73ad-c790-4a42-9d47-fe25472c0d38",
+              "z": 14,
+              "attrs": {}
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "0edf595d-36a1-478f-b113-886d91c945f2"
+              },
+              "target": {
+                "id": "e18a6f67-aaa8-4bcb-97d1-95e881a2a06c"
+              },
+              "vertices": [
+                {
+                  "x": 345,
+                  "y": 263
+                },
+                {
+                  "x": 202,
+                  "y": 315
+                }
+              ],
+              "id": "8997088e-2aab-467a-890c-2babee8eb44d",
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "Uygulama Çağrısı",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 15,
+              "hasOpenThreats": false,
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "e18a6f67-aaa8-4bcb-97d1-95e881a2a06c"
+              },
+              "target": {
+                "id": "0edf595d-36a1-478f-b113-886d91c945f2"
+              },
+              "vertices": [
+                {
+                  "x": 351,
+                  "y": 321
+                },
+                {
+                  "x": 454,
+                  "y": 101
+                }
+              ],
+              "id": "27507a15-08fe-4a15-8ea8-b4c6b7cc96d7",
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "Uygulama Cevabı",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 16,
+              "hasOpenThreats": false,
+              "description": "Rol yetkileri kontrolleri sonucunda bir geri dönüş olur.",
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "24d3a54a-d57a-4f78-b400-ac2b908daa3d"
+              },
+              "target": {
+                "id": "0834d56a-1faf-4391-ab88-8e1e1ddb582d"
+              },
+              "vertices": [
+                {
+                  "x": 471,
+                  "y": 488
+                }
+              ],
+              "id": "002b49eb-21d0-4ae0-8206-5580a830cde5",
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "Veri CRUD",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 17,
+              "hasOpenThreats": false,
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "0834d56a-1faf-4391-ab88-8e1e1ddb582d"
+              },
+              "target": {
+                "id": "24d3a54a-d57a-4f78-b400-ac2b908daa3d"
+              },
+              "vertices": [
+                {
+                  "x": 683,
+                  "y": 338
+                }
+              ],
+              "id": "325ff2d0-7de0-4df5-b9ec-84b57f7f1606",
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "Veri Select",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 18,
+              "hasOpenThreats": false,
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "e18a6f67-aaa8-4bcb-97d1-95e881a2a06c"
+              },
+              "target": {
+                "id": "8957df9b-be19-47a8-ab26-34f99c1b5a0e"
+              },
+              "vertices": [
+                {
+                  "x": 448,
+                  "y": 284
+                },
+                {
+                  "x": 426,
+                  "y": 265
+                }
+              ],
+              "id": "6424ae1e-1580-4032-9051-2b5af614ee19",
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "Kullanıcı CRUD",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 19,
+              "hasOpenThreats": false,
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "8957df9b-be19-47a8-ab26-34f99c1b5a0e"
+              },
+              "target": {
+                "id": "e18a6f67-aaa8-4bcb-97d1-95e881a2a06c"
+              },
+              "vertices": [
+                {
+                  "x": 393,
+                  "y": 415
+                }
+              ],
+              "id": "da9e1d9d-bac7-42f2-a1c9-aa1111683f88",
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "İşlem Sonucu",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 20,
+              "hasOpenThreats": false,
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "8957df9b-be19-47a8-ab26-34f99c1b5a0e"
+              },
+              "target": {
+                "id": "24d3a54a-d57a-4f78-b400-ac2b908daa3d"
+              },
+              "vertices": [
+                {
+                  "x": 581,
+                  "y": 251
+                }
+              ],
+              "id": "c81c0676-f3e2-4fd1-bcd1-011d49d675a9",
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "Veri gönder",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 21,
+              "hasOpenThreats": false,
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "24d3a54a-d57a-4f78-b400-ac2b908daa3d"
+              },
+              "target": {
+                "id": "8957df9b-be19-47a8-ab26-34f99c1b5a0e"
+              },
+              "vertices": [
+                {
+                  "x": 699,
+                  "y": 216
+                }
+              ],
+              "id": "e82b3824-1b89-42d2-9792-ea59255f214b",
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "Veri Getir",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 22,
+              "hasOpenThreats": false,
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "e18a6f67-aaa8-4bcb-97d1-95e881a2a06c"
+              },
+              "target": {
+                "id": "faf5ea3f-3d33-47ed-973d-e12eec606ad8"
+              },
+              "vertices": [
+                {
+                  "x": 157,
+                  "y": 405
+                }
+              ],
+              "id": "ee9959a8-366a-42a8-bdcd-0bbdb499b3db",
+              "labels": [
+                {
+                  "position": {
+                    "distance": 0.6059182552625542,
+                    "offset": 24.40346537584313
+                  },
+                  "attrs": {
+                    "text": {
+                      "text": "Görev CRUD",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 23,
+              "hasOpenThreats": false,
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "faf5ea3f-3d33-47ed-973d-e12eec606ad8"
+              },
+              "target": {
+                "id": "e18a6f67-aaa8-4bcb-97d1-95e881a2a06c"
+              },
+              "vertices": [
+                {
+                  "x": 150,
+                  "y": 578
+                }
+              ],
+              "id": "1114bb8d-1471-4530-9d95-71e20e79a870",
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "İşlem Sonucu",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 24,
+              "hasOpenThreats": false,
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "e18a6f67-aaa8-4bcb-97d1-95e881a2a06c"
+              },
+              "target": {
+                "id": "24d3a54a-d57a-4f78-b400-ac2b908daa3d"
+              },
+              "id": "00f8a10a-341d-47c3-80c6-1602a349e707",
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "Veri gönder",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 24,
+              "hasOpenThreats": false,
+              "vertices": [
+                {
+                  "x": 377,
+                  "y": 503
+                }
+              ],
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "24d3a54a-d57a-4f78-b400-ac2b908daa3d"
+              },
+              "target": {
+                "id": "e18a6f67-aaa8-4bcb-97d1-95e881a2a06c"
+              },
+              "vertices": [
+                {
+                  "x": 462,
+                  "y": 423
+                },
+                {
+                  "x": 393,
+                  "y": 448
+                },
+                {
+                  "x": 357,
+                  "y": 459
+                }
+              ],
+              "id": "2a32a509-1436-450a-a43f-466ff76637ae",
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "Veri getir",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 25,
+              "hasOpenThreats": false,
+              "threats": [],
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            }
+          ]
+        },
+        "size": {
+          "height": 596,
+          "width": 1430
+        }
       }
     ]
   }
